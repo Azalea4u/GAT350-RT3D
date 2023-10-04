@@ -7,7 +7,7 @@ namespace nc
 {
     bool World01::Initialize()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             m_positions.push_back({ randomf(-1, 1), randomf(-1, 1) });
         }
@@ -32,24 +32,30 @@ namespace nc
         // pre-render
         renderer.BeginFrame();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             // render
             glPushMatrix();
-            glTranslatef(m_position.x, m_position.y, 0);
-            glRotatef(m_angle, 0, 0, 1);
+            glTranslatef(m_positions[i].x / 5, m_positions[i].y / 5, 0);
+            glRotatef(m_angle + i * 20, 0, 0, 1); // Rotate each triangle differently
             //glScalef(sin(m_time * 5) * 0.5f, 1, 1);
 
-            glBegin(GL_TRIANGLES);
 
-            glColor3f(1, 0, 0);
-            glVertex2f(-0.5f, -0.5f);
+            glBegin(GL_POLYGON); // Use GL_POLYGON for a filled shape
 
-            glColor3f(0, 1, 0);
-            glVertex2f(0, 0.5f);
-        
-            glColor3f(0, 0, 1);
-            glVertex2f(0.5f, -0.5f);
+
+            for (float angle = 0; angle < 2 * M_PI; angle += M_PI / 3)
+            {
+                // Create a hexagon by drawing 6 vertices
+                float x = 0.3f * cos(angle);
+                float y = 0.3f * sin(angle);
+                glVertex2f(x, y);
+    
+                // Generate a random color for each triangle
+                glColor3f(static_cast<float>(rand()) / RAND_MAX,
+                    static_cast<float>(rand()) / RAND_MAX,
+                    static_cast<float>(rand()) / RAND_MAX);
+            }
 
             glEnd();
 
@@ -59,4 +65,40 @@ namespace nc
         // post-render
         renderer.EndFrame();
     }
+    /*
+    void World01::Draw(Renderer& renderer)
+    {
+        // pre-render
+        renderer.BeginFrame();
+
+        for (int i = 0; i < 50; i++)
+        {
+            // render
+            glPushMatrix();
+            glTranslatef(m_positions[i].x, m_positions[i].y, 0);
+            //glRotatef(m_angle, 0, 0, 1);
+            //glScalef(sin(m_time * 5) * 0.5f, 1, 1);
+
+            glBegin(GL_TRIANGLES);
+
+            glColor3f(0, 1, 0.5);
+            glVertex2f(0.5f, 0.5f);
+
+            glColor3f(0.5, 1, 0);
+            glVertex2f(randomf(0.1f), randomf(0.1f));
+
+            glColor3f(1, 0.4, 0.5);
+            glVertex2f(randomf(0.1f), randomf(0.1f));
+
+            glEnd();
+
+            glPopMatrix();
+        }
+
+        // post-render
+        renderer.EndFrame();
+    }*/
+    
+
+
 }
