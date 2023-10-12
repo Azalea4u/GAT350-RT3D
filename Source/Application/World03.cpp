@@ -5,22 +5,23 @@
 
 #include <glm/glm/gtc/type_ptr.hpp>
 
-#define INTERLEAVE
-
 namespace nc
 {
     bool World03::Initialize()
     {
-        m_program = GET_RESOURCE(Program, "Shaders/unlit_color.prog");
+        m_program = GET_RESOURCE(Program, "Shaders/unlit_texture.prog");
         m_program->Use();
 
-#ifdef INTERLEAVE
+        m_texture = GET_RESOURCE(Texture, "Textures/llama.png");
+        m_texture->Bind();
+        m_texture->SetActive(GL_TEXTURE0);
+
         // vertex data
         float vertexData[] = {
-          -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, //red
-          -0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f, //
-           0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, // blue
-           0.5f,  0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // green
+          -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+          -0.8f,  0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+           0.8f, -0.8f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+           0.8f,  0.8f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f
         };
 
         GLuint vbo;
@@ -31,7 +32,7 @@ namespace nc
         glGenVertexArrays(1, &m_vao); // Create a Vertex Array Object
         glBindVertexArray(m_vao); // Set Vertex Array Object as current/active object
 
-        glBindVertexBuffer(0, vbo, 0, 6 * sizeof(GLfloat));
+        glBindVertexBuffer(0, vbo, 0, 8 * sizeof(GLfloat));
 
         // position
         glEnableVertexAttribArray(0);
@@ -42,9 +43,13 @@ namespace nc
         glEnableVertexAttribArray(1);
         glVertexAttribFormat(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float));
         glVertexAttribBinding(1, 0);
-#endif // INTERLEAVE
 
-       m_position.z = -5;
+        // texcoord
+        glEnableVertexAttribArray(2);
+        glVertexAttribFormat(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float));
+        glVertexAttribBinding(2, 0);
+
+        m_transform.rotation.z = 0;
 
         return true;
     }
@@ -55,7 +60,14 @@ namespace nc
 
     void World03::Update(float dt)
     {
-        m_angle += 190 * dt;
+        ENGINE.GetSystem<Gui>()->BeginFrame();
+
+        ImGui::Begin("Transform");
+        ImGui::DragFloat3("Position", &m_transform.position[0]);
+        ImGui::DragFloat3("Scale", &m_transform.scale[0]);
+        ImGui::End();
+
+        //m_transform.rotation.z += 180 * dt;
 
         /*
         if (ENGINE.GetSystem<InputSystem>()->GetMouseButtonDown(0))
@@ -68,39 +80,41 @@ namespace nc
             m_positions.push_back(position);
         }
         */
-
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
-        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0;
-        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
+        m_transform.rotation.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_UP) ? 180 * dt : 0;
+        m_transform.rotation.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
+        m_transform.rotation.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0;
+        m_transform.rotation.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
+        
         m_time += dt;
 
+        m_program->SetUniform("offset", glm::vec2{ m_time, 0 });
+        m_program->SetUniform("tiling", glm::vec2{ 2, 2 });
+
         // model matrix
-        glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
-        glm::mat4 rotation = glm::rotate(glm::mat4{ 1 }, glm::radians(m_angle), glm::vec3{0, 0, 1});
-        glm::mat4 model = position * rotation;
-        GLint uniform = glGetUniformLocation(m_program->m_program, "model");
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(model));
+        glm::mat4 model = glm::rotate(glm::radians(m_transform.rotation.x), glm::vec3{ 1, 0, 0 });
+        m_program->SetUniform("model", m_transform.GetMatrix());
 
         // view matrix
-        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 4, 5 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
-        uniform = glGetUniformLocation(m_program->m_program, "view");
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(view));
+        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
+        m_program->SetUniform("view", view);
 
         // projection
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
-        uniform = glGetUniformLocation(m_program->m_program, "projection");
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(projection));
+        m_program->SetUniform("projection", projection);
+
+        ENGINE.GetSystem<Gui>()->EndFrame();
+
     }
 
     void World03::Draw(Renderer& renderer)
     {
         // pre-render
         renderer.BeginFrame();
-
         // render
         glBindVertexArray(m_vao);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+        ENGINE.GetSystem<Gui>()->Draw();
 
         // post-render
         renderer.EndFrame();
