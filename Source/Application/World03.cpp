@@ -24,30 +24,11 @@ namespace nc
            0.8f,  0.8f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f
         };
 
-        GLuint vbo;
-        glGenBuffers(1, &vbo); // Create a Vertex Buffer Object
-        glBindBuffer(GL_ARRAY_BUFFER, vbo); // Set Vertex Buffer Object as current/active buffer
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW); // Set Vertex Data in VBO
-
-        glGenVertexArrays(1, &m_vao); // Create a Vertex Array Object
-        glBindVertexArray(m_vao); // Set Vertex Array Object as current/active object
-
-        glBindVertexBuffer(0, vbo, 0, 8 * sizeof(GLfloat));
-
-        // position
-        glEnableVertexAttribArray(0);
-        glVertexAttribFormat(0, 3, GL_FLOAT, GL_FALSE, 0);
-        glVertexAttribBinding(0, 0);
-
-        // color
-        glEnableVertexAttribArray(1);
-        glVertexAttribFormat(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float));
-        glVertexAttribBinding(1, 0);
-
-        // texcoord
-        glEnableVertexAttribArray(2);
-        glVertexAttribFormat(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float));
-        glVertexAttribBinding(2, 0);
+        m_vertexBuffer = GET_RESOURCE(VertexBuffer, "vb");
+        m_vertexBuffer->CreateVertexBuffer(sizeof(vertexData), 4, vertexData);
+        m_vertexBuffer->SetAttribute(0, 3, 8 * sizeof(float), 0);                  // position
+        m_vertexBuffer->SetAttribute(1, 3, 8 * sizeof(float), 3 * sizeof(float));  // color
+        m_vertexBuffer->SetAttribute(2, 2, 8 * sizeof(float), 6 * sizeof(float));  // texcoord
 
         m_transform.rotation.z = 0;
 
@@ -110,10 +91,9 @@ namespace nc
     {
         // pre-render
         renderer.BeginFrame();
-        // render
-        glBindVertexArray(m_vao);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
+        // render
+        m_vertexBuffer->Draw(GL_TRIANGLE_STRIP);
         ENGINE.GetSystem<Gui>()->Draw();
 
         // post-render
