@@ -31,7 +31,7 @@ namespace nc
 		glGenBuffers(1, &m_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		// copy data into vertex buffer
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW); // Set Vertex Data in VBO
+		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW); // Set Vertex Data in VBO
 	}
 
 	void VertexBuffer::CreateIndexBuffer(GLenum indexType, GLsizei count, GLvoid* data)
