@@ -1,5 +1,5 @@
 {
-  "program":"shaders/unlit_multi_texture.prog",
+  "program":"shaders/lit_texture.prog",
   "textures": [ "textures/llama.tga", "textures/sophia.png" ],
   "color":[
       1,
