@@ -19,9 +19,8 @@ namespace nc
 		float m_speed = 5;
 
 		glm::vec3 m_lightPosition{ 0, 8, 0 };
-		glm::vec3 m_lightDirection{ 0, -1, 0 };
 		glm::vec3 m_lightColor{ 1 };
-		glm::vec3 m_ambientColor{ 0.2f };
+		glm::vec3 m_ambientLight{ 0.2f };
 
 		Transform m_transform;
 
