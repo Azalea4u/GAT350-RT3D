@@ -12,7 +12,7 @@ namespace nc
         auto material = GET_RESOURCE(Material, "Materials/grid.mtrl"); 
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("Models/cube.obj");
+        m_model->Load("Models/sphere.obj");
 
         return true;
     }
@@ -26,8 +26,15 @@ namespace nc
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         ImGui::Begin("Transform");
-        ImGui::DragFloat3("Position", &m_transform.position[0]);
+        ImGui::DragFloat3("Position", &m_transform.position[0], 0.1f);
+        ImGui::DragFloat3("Rotation", &m_transform.rotation[0]);
         ImGui::DragFloat3("Scale", &m_transform.scale[0]);
+        ImGui::End();
+
+        ImGui::Begin("Light");
+        ImGui::DragFloat3("Position", glm::value_ptr(m_lightPosition), 0.1f);
+        ImGui::ColorEdit3("Color", glm::value_ptr(m_lightColor));
+        ImGui::ColorEdit3("Ambient Color", glm::value_ptr(m_ambientColor));
         ImGui::End();
 
         //m_transform.rotation.z += 180 * dt;
@@ -39,10 +46,15 @@ namespace nc
         
         m_time += dt;
 
+        // material
         auto material = m_model->GetMaterial();
-        
         material->ProcessGui();
         material->Bind();
+
+        material->GetProgram()->SetUniform("light.position", m_lightPosition);
+        material->GetProgram()->SetUniform("light.direction", m_lightDirection);
+        material->GetProgram()->SetUniform("light.color", m_lightColor);
+        material->GetProgram()->SetUniform("ambientColor", m_ambientColor);
 
         // model matrix
         material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
@@ -64,7 +76,9 @@ namespace nc
         renderer.BeginFrame();
 
         // render
-        m_model->Draw(GL_TRIANGLES);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        m_model->Draw();
+
         ENGINE.GetSystem<Gui>()->Draw();
 
         // post-render

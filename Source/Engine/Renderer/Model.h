@@ -26,13 +26,10 @@ namespace nc
 		bool Create(std::string filename, ...) override;
 		bool Load(const std::string& filename);
 		void Draw(GLenum primitive = GL_TRIANGLES);
-		//void Draw(GLenum primitive <set the default parameter to GL_TRIANGLE>);
 
 		void SetMaterial(res_t<Material> material) { m_material = material; }
-		//void SetMaterial(res_t<Material> material) { <set the class material> }
 		res_t<Material> GetMaterial() { return m_material; }
-		//res_t<Material> GetMaterial() { <return the class material> }
-
+	
 	private:
 		void ProcessNode(aiNode* node, const aiScene* scene);
 		void ProcessMesh(aiMesh* mesh, const aiScene* scene);
