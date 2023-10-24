@@ -30,12 +30,41 @@ uniform struct Light
     float range;
     float innerAngle;
     float outerAngle;
-} light;
+} lights[3];
 
 uniform vec3 ambientLight;
+uniform int numLights = 1;
 
 layout(binding = 0) uniform sampler2D tex;
 
+void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
+{
+    // DIFFUSE 
+    vec3 lightDir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.position - position);
+
+    float spotIntensity = 1;
+    if (light.type == SPOT) 
+    {
+		float angle = acos(dot(light.direction, -lightDir));
+        spotIntensity = smoothstep(light.outerAngle + 0.001, light.innerAngle, angle);
+	}
+
+    float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
+    diffuse = material.diffuse * (light.color * intensity);
+
+    // SPECULAR
+    specular = vec3(0);
+    if (intensity > 0) {
+        vec3 reflection = reflect(-lightDir, normal);
+        vec3 viewDir = normalize(-position);
+        intensity = max(dot(reflection, viewDir), 0);
+        intensity = pow(intensity, material.shininess);
+        specular = material.specular * intensity * spotIntensity;
+    }
+}
+
+
+/*
 vec3 ads(in vec3 position, in vec3 normal)
 {
     // AMBIENT
@@ -50,36 +79,22 @@ vec3 ads(in vec3 position, in vec3 normal)
         attenuation = pow(attenuation, 2.0);
 	}
 
-    // DIFFUSE 
-    vec3 lightDir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.position - position);
-
-    float spotIntensity = 1;
-    if (light.type == SPOT) 
-    {
-		float angle = acos(dot(light.direction, -lightDir));
-        spotIntensity = smoothstep(light.outerAngle + 0.001, light.innerAngle, angle);
-	}
-
-    float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-    vec3 diffuse = material.diffuse * (light.color * intensity);
-
-    // SPECULAR
-    vec3 specular = vec3(0);
-    if (intensity > 0) {
-        vec3 reflection = reflect(-lightDir, normal);
-        vec3 viewDir = normalize(-position);
-        intensity = max(dot(reflection, viewDir), 0);
-        intensity = pow(intensity, material.shininess);
-        specular = material.specular * intensity * spotIntensity;
-    }
-
     // Combine ambient, diffuse, and specular
     return ambient + (diffuse + specular) * light.intensity * attenuation;
 }
+*/
 
 void main()
 {
+	vec4 texcolor = texture(tex, ftexcoord);
+	ocolor = vec4(ambientLight, 1);
  
-    vec4 texcolor = texture(tex, ftexcoord);
-    ocolor = texcolor * vec4(ads(fposition, fnormal), 1);
+	for (int i = 0; i < numLights; i++)
+	{
+		vec3 diffuse;
+		vec3 specular;
+ 
+		phong(lights[i], fposition, fnormal, diffuse, specular);
+		ocolor += (vec4(diffuse, 1) * texcolor) + vec4(specular, 1);
+	}
 }
