@@ -63,6 +63,15 @@ void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, ou
     }
 }
 
+float attenuation(in vec3 position1, in vec3 position2, in float range)
+{
+	float distanceSqr = dot(position1 - position2, position1 - position2);
+	float rangeSqr = pow(range, 2.0);
+	float attenuation = max(0, 1 - pow((distanceSqr / rangeSqr), 2.0));
+	attenuation = pow(attenuation, 2.0);
+ 
+	return attenuation;
+}
 
 /*
 vec3 ads(in vec3 position, in vec3 normal)
@@ -87,14 +96,18 @@ vec3 ads(in vec3 position, in vec3 normal)
 void main()
 {
 	vec4 texcolor = texture(tex, ftexcoord);
-	ocolor = vec4(ambientLight, 1);
+	// set ambient light
+	ocolor = vec4(ambientLight, 1) * texcolor;
  
+	// set lights
 	for (int i = 0; i < numLights; i++)
 	{
 		vec3 diffuse;
 		vec3 specular;
  
+		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
+ 
 		phong(lights[i], fposition, fnormal, diffuse, specular);
-		ocolor += (vec4(diffuse, 1) * texcolor) + vec4(specular, 1);
+		ocolor += ((vec4(diffuse, 1) * texcolor) + vec4(specular, 1)) * lights[i].intensity * attenuation;
 	}
 }
