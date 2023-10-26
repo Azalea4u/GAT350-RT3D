@@ -44,5 +44,6 @@ namespace nc
 	void LightComponent::Read(const nc::json_t& value)
 	{
 		// read json file
+
 	}
 }
