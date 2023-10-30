@@ -11,6 +11,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	/*
 	nc::StringUtils stringUtils;
 
 	// Test ToUpper function
@@ -31,8 +32,8 @@ int main(int argc, char* argv[])
 
 	std::string uniqueText2 = stringUtils.CreateUnique("Test");
 	std::cout << "CreateUnique 2: " << uniqueText2 << std::endl;
-
-	/*
+	*/
+	
 	INFO_LOG("Initialize Engine...")
 
 	//nc::MemoryTracker::Initialize();
@@ -59,7 +60,7 @@ int main(int argc, char* argv[])
 	}
 
 	world->Shutdown();
-	ENGINE.Shutdown();*/
+	ENGINE.Shutdown();
 
 	return 0;
 }
