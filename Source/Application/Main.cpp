@@ -11,6 +11,28 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	nc::StringUtils stringUtils;
+
+	// Test ToUpper function
+	std::string upperText = stringUtils.ToUpper("Hello, World!");
+	std::cout << "ToUpper: " << upperText << std::endl;
+
+	// Test ToLower function
+	std::string lowerText = stringUtils.ToLower("Hello, World!");
+	std::cout << "ToLower: " << lowerText << std::endl;
+
+	// Test IsEqualIgnoreCase function
+	bool isEqual = stringUtils.IsEqualIgnoreCase("Hello", "hello");
+	std::cout << "IsEqualIgnoreCase: " << (isEqual ? "true" : "false") << std::endl;
+
+	// Test CreateUnique function
+	std::string uniqueText1 = stringUtils.CreateUnique("Test");
+	std::cout << "CreateUnique 1: " << uniqueText1 << std::endl;
+
+	std::string uniqueText2 = stringUtils.CreateUnique("Test");
+	std::cout << "CreateUnique 2: " << uniqueText2 << std::endl;
+
+	/*
 	INFO_LOG("Initialize Engine...")
 
 	//nc::MemoryTracker::Initialize();
@@ -37,7 +59,7 @@ int main(int argc, char* argv[])
 	}
 
 	world->Shutdown();
-	ENGINE.Shutdown();
+	ENGINE.Shutdown();*/
 
 	return 0;
 }
