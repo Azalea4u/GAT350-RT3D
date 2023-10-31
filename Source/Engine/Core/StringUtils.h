@@ -11,7 +11,7 @@ namespace nc
 
 		bool IsEqualIgnoreCase(std::string str1, std::string str2);
 
-		std::string CreateUnique(std::string input);
+		std::string CreateUnique(const std::string input);
 		//std::string CreateUnique(std::string input) { return input; }
 	};
 }
