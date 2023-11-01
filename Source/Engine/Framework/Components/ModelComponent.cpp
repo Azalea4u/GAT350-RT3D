@@ -36,7 +36,6 @@ namespace nc
 		glCullFace(cullface);
 
 		model->Draw();
-		//m_model->Draw(renderer, m_owner->transform);
 	}
 
 	void ModelComponent::Read(const json_t& value)
@@ -45,12 +44,11 @@ namespace nc
 		READ_DATA(value, materialName);
 
 		READ_DATA(value, enableDepth);
+
 		std::string cullfaceName;
-		if (READ_NAME_DATA(value, "cullface", cullface))
+		if (READ_NAME_DATA(value, "cullface", cullfaceName))
 		{
-			cullface = GL_FRONT;
-			//if (IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
-			//if (IsEqualIgnoreCase(cullfaceName, "none")) cullface = GL_NONE;
+			if (IsEqualIgnoreCase(cullfaceName, "front")) cullface = GL_FRONT;
 		}
 	}
 }

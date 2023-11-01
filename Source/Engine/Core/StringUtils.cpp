@@ -2,7 +2,7 @@
 
 namespace nc
 {
-	std::string StringUtils::ToUpper(const std::string string)
+	std::string ToUpper(const std::string string)
 	{
 		std::string temp = string;
 		for (char& c : temp)
@@ -12,7 +12,7 @@ namespace nc
 		return temp;
 	}
 
-	std::string StringUtils::ToLower(const std::string string)
+	std::string ToLower(const std::string string)
 	{
 		std::string temp = string;
 		for (char& c : temp)
@@ -22,8 +22,9 @@ namespace nc
 		return temp;
 	}
 
-	bool StringUtils::IsEqualIgnoreCase(const std::string str1, std::string str2)
+	bool IsEqualIgnoreCase(const std::string& str1, const std::string& str2)
 	{
+
 		std::string temp1 = ToLower(str1);
 		std::string temp2 = ToLower(str2);
 
@@ -31,7 +32,7 @@ namespace nc
 	}
 
 	// takes in a string an input and appends static unsigned integer to the end of the string
-	std::string StringUtils::CreateUnique(const std::string input)
+	std::string CreateUnique(const std::string input)
 	{
 		static uint32_t unique = 0;
  
