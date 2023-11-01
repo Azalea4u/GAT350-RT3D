@@ -30,7 +30,6 @@ namespace nc
 
 		stbi_set_flip_vertically_on_load(true);
 		unsigned char* data = stbi_load(filename.c_str(), &m_size.x, &m_size.y, &channels, 0);
-
 		if (!data)
 		{
 			WARNING_LOG("Data could not be created: " << filename);

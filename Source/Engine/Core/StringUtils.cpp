@@ -2,7 +2,7 @@
 
 namespace nc
 {
-	std::string StringUtils::ToUpper(std::string string)
+	std::string StringUtils::ToUpper(const std::string string)
 	{
 		std::string temp = string;
 		for (char& c : temp)
@@ -12,7 +12,7 @@ namespace nc
 		return temp;
 	}
 
-	std::string StringUtils::ToLower(std::string string)
+	std::string StringUtils::ToLower(const std::string string)
 	{
 		std::string temp = string;
 		for (char& c : temp)
@@ -22,7 +22,7 @@ namespace nc
 		return temp;
 	}
 
-	bool StringUtils::IsEqualIgnoreCase(std::string str1, std::string str2)
+	bool StringUtils::IsEqualIgnoreCase(const std::string str1, std::string str2)
 	{
 		std::string temp1 = ToLower(str1);
 		std::string temp2 = ToLower(str2);

@@ -6,12 +6,11 @@ namespace nc
 	class StringUtils
 	{
 	public:
-		std::string ToUpper(std::string Uppercase);
-		std::string ToLower(std::string Lowercase);
+		static std::string ToUpper(const std::string Uppercase);
+		static std::string ToLower(const std::string Lowercase);
 
-		bool IsEqualIgnoreCase(std::string str1, std::string str2);
+		static bool IsEqualIgnoreCase(const std::string str1, std::string str2);
 
-		std::string CreateUnique(const std::string input);
-		//std::string CreateUnique(std::string input) { return input; }
+		static std::string CreateUnique(const std::string input);
 	};
 }
