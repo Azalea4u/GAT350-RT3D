@@ -1,5 +1,5 @@
 {
-  "program": "shaders/skybox.prog",
+  "program": "shaders/refraction.prog",
   "cubemap": "beach_cubemap",
   "cubemaps": [
     "textures/beach_cubemap/posx.jpg",

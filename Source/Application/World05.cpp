@@ -13,20 +13,6 @@ namespace nc
         m_scene = std::make_unique<Scene>();
         m_scene->Load("Scenes/scene.json");
         m_scene->Initialize();
-        
-        /*
-        {
-            auto actor = CREATE_CLASS(Actor);
-            actor->name = "actor1";
-            actor->transform.position = glm::vec3{ 0, 0, 0 };
-            auto modelComponent = CREATE_CLASS(ModelComponent);
-            modelComponent->model = std::make_shared<Model>();
-            modelComponent->model->SetMaterial(GET_RESOURCE(Material, "materials/squirrel.mtrl"));
-            modelComponent->model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
-            actor->AddComponent(std::move(modelComponent));
-            m_scene->Add(std::move(actor));
-        }
-        */
 
         {
             auto actor = CREATE_CLASS(Actor);
@@ -79,13 +65,26 @@ namespace nc
         actor->transform.rotation.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
         actor->transform.rotation.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
         
-
         auto material = actor->GetComponent<ModelComponent>()->model->GetMaterial();
 
         material->ProcessGui();
         material->Bind();
 
-        //material->GetProgram()->SetUniform("ambientLight", m_ambientLight);
+        material = GET_RESOURCE(Material, "materials/refraction.mtrl");
+        if (material)
+        {
+			ImGui::Begin("Refraction");
+
+            m_refraction = 1.0f + std::fabs(std::sin(m_time) * 0.1f);
+
+            ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1.0f, 3.0f);
+            auto program = material->GetProgram();
+            program->Use();
+            program->SetUniform("ior", m_refraction);
+
+            ImGui::End();
+		}
+
         m_time += dt;
 
         ENGINE.GetSystem<Gui>()->EndFrame();

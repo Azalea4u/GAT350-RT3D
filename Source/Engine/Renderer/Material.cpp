@@ -96,30 +96,25 @@ namespace nc
 			params |= ALBEDO_TEXTURE_MASK;
 			albedoTexture->SetActive(GL_TEXTURE0);
 			albedoTexture->Bind();
-			m_program->SetUniform("albedoTexture", 0);
 		}
 
 		if (specularTexture)
 		{
 			specularTexture->SetActive(GL_TEXTURE1);
 			specularTexture->Bind();
-			m_program->SetUniform("specularTexture", 1);
 		}
 
 		if (normalTexture)
 		{
 			normalTexture->SetActive(GL_TEXTURE2);
 			normalTexture->Bind();
-			m_program->SetUniform("normalTexture", 2);
 		}
 
 		if (emissiveTexture)
 		{
 			emissiveTexture->SetActive(GL_TEXTURE3);
 			emissiveTexture->Bind();
-			m_program->SetUniform("emissiveTexture", 3);
 		}
-
 	}
 
 	void Material::ProcessGui()
