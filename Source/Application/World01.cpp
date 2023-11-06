@@ -21,9 +21,18 @@ namespace nc
 
     void World01::Update(float dt)
     {
-        m_angle += 90 * dt;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt : 0;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? +dt : 0;
+        m_angle += 180 * dt;
+
+        if (ENGINE.GetSystem<InputSystem>()->GetMouseButtonDown(0))
+        {
+            auto position = ENGINE.GetSystem<InputSystem>()->GetMousePosition();
+            position /= glm::vec2{ ENGINE.GetSystem<Renderer>()->GetWidth(), ENGINE.GetSystem<Renderer>()->GetHeight() };
+            position *= 2;
+            position -= 1;
+            position.y *= -1;
+
+            m_positions.push_back(position);
+		}
 
         m_time += dt;
     }

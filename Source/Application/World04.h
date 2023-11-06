@@ -39,11 +39,12 @@ namespace nc
 		
 		//light_t m_light;
 		light_t m_lights[3];
+		int m_selected;
 		glm::vec3 m_ambientLight{ 0.2f };
 
-		int m_selected;
 
 		Transform m_transform;
 		res_t<Model> m_model;
+		res_t<Material> m_material;
 	};
 }
