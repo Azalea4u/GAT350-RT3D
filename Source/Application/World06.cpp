@@ -22,7 +22,7 @@ namespace nc
         framebuffer->CreateFramebuffer(texture);
         ADD_RESOURCE("fb", framebuffer);
 
-        auto material = GET_RESOURCE(Material, "Materials/frameBuffer.mtrl");
+        auto material = GET_RESOURCE(Material, "materials/frameBuffer.mtrl");
         if (material)
         {
             material->albedoTexture = texture;
@@ -49,7 +49,7 @@ namespace nc
 
     void World06::Draw(Renderer& renderer)
     {
-        // *** PASS 1 ***
+        // *** PASS 1 *** //
         m_scene->GetActorByName("cube")->active = false;
 
         auto framebuffer = GET_RESOURCE(Framebuffer, "fb");
@@ -61,7 +61,7 @@ namespace nc
 
         framebuffer->Unbind();
 
-        // *** PASS 2 ***
+        // *** PASS 2 *** //
         m_scene->GetActorByName("cube")->active = true;
 
         renderer.ResetViewport();
@@ -72,6 +72,5 @@ namespace nc
         // post-render
         ENGINE.GetSystem<Gui>()->Draw();
         renderer.EndFrame();
-    }
-      
+    } 
 }

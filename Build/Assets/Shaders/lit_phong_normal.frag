@@ -11,7 +11,7 @@
 
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec2 ftexcoord;
-in layout(location = 2) vec3 ftbn;
+in layout(location = 2) mat3 ftbn;
 
 out layout(location = 0) vec4 ocolor;
 
@@ -47,6 +47,16 @@ layout(binding = 1) uniform sampler2D specularTexture;
 layout(binding = 2) uniform sampler2D normalTexture;
 layout(binding = 3) uniform sampler2D emissiveTexture;
 
+float attenuation(in vec3 position1, in vec3 position2, in float range)
+{
+	float distanceSqr = dot(position1 - position2, position1 - position2);
+	float rangeSqr = pow(range, 2.0);
+	float attenuation = max(0, 1 - pow((distanceSqr / rangeSqr), 2.0));
+	attenuation = pow(attenuation, 2.0);
+ 
+	return attenuation;
+}
+
 void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
 {
     // DIFFUSE 
@@ -71,16 +81,6 @@ void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, ou
         intensity = pow(intensity, material.shininess);
         specular = material.specular * intensity * spotIntensity;
     }
-}
-
-float attenuation(in vec3 position1, in vec3 position2, in float range)
-{
-	float distanceSqr = dot(position1 - position2, position1 - position2);
-	float rangeSqr = pow(range, 2.0);
-	float attenuation = max(0, 1 - pow((distanceSqr / rangeSqr), 2.0));
-	attenuation = pow(attenuation, 2.0);
- 
-	return attenuation;
 }
 
 void main()

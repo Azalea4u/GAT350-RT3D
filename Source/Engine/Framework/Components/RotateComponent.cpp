@@ -25,7 +25,6 @@ namespace nc
 	void RotateComponent::Read(const nc::json_t& value)
 	{
 		// read json file
-		//READ_DATA(value, speed);
 	}
 }
 

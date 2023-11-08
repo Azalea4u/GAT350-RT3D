@@ -9,16 +9,16 @@
     1
   ],
   "specular": [
-    0.4,
-    0.4,
-    0.4
+    1,
+    1,
+    1
   ],
   "emissive": [
     0,
     0,
     0
   ],
-  "shininess": 60,
+  "shininess": 120,
   "tiling": [ 1, 1 ],
   "offset": [ 0, 0 ]
 }

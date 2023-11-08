@@ -15,6 +15,10 @@
 					"type": "ModelComponent",
 					"modelName": "models/ogre.obj",
 					"materialName": "materials/ogre.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eular": 10
 				}
 			]
 		},
@@ -50,7 +54,7 @@
 			"components": [
 				{
 					"type": "LightComponent",
-					"eType": "Point",
+					"lightType": "Point",
 					"color": [ 1, 1, 1 ],
 					"intensity": 1,
 					"range": 20,

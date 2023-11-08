@@ -75,6 +75,7 @@ namespace nc
 		READ_DATA(document, albedo);
 		READ_DATA(document, specular);
 		READ_DATA(document, emissive);
+		READ_DATA(document, shininess);
 		READ_DATA(document, tiling);
 		READ_DATA(document, offset);
 
@@ -84,6 +85,7 @@ namespace nc
 	void Material::Bind()
 	{
 		m_program->Use();
+		m_program->SetUniform("material.params", params);
 		m_program->SetUniform("material.albedo", albedo);
 		m_program->SetUniform("material.specular", specular);
 		m_program->SetUniform("material.emissive", emissive);
