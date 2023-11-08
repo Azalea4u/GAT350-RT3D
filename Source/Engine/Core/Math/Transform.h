@@ -16,15 +16,15 @@ namespace nc
 		glm::quat rotation{ glm::vec3{ 0 } };
 		glm::vec3 scale{ 1 };
 
-		glm::vec3 eular{ 0 };
+		glm::vec3 euler{ 0 };
 
 	public:
 		Transform() = default;
-		Transform(const glm::vec3& position, const glm::vec3& rotation = glm::vec3{ 0 }, const glm::vec3& scale = glm::vec3{ 1 }) :
+		Transform(const glm::vec3& position, const glm::quat& rotation = glm::vec3{ 0 }, const glm::vec3& scale = glm::vec3{ 1 }) :
 			position{ position },
-			rotation{ EulerToQuaternion(rotation) },
+			rotation{ rotation },
 			scale{ scale },
-			eular{ QuaternionToEuler(rotation) }
+			euler{ QuaternionToEuler(rotation) }
 		{}
 
 		glm::mat4 GetMatrix() const
@@ -37,7 +37,7 @@ namespace nc
 			return mx;
 		}
 
-		glm::vec3 Forward() { return rotation * glm::vec3{ 0, 1, 0 }; }
+		glm::vec3 Forward() { return rotation * glm::vec3{ 0, 0, 1 }; }
 		glm::vec3 Right() { return rotation * glm::vec3{ 1, 0, 0 }; }
 		glm::vec3 Up() { return rotation * glm::vec3{ 0, 1, 0 }; }
 

@@ -100,24 +100,28 @@ namespace nc
 
 		if (specularTexture)
 		{
+			params |= SPECULAR_TEXTURE_MASK;
 			specularTexture->SetActive(GL_TEXTURE1);
 			specularTexture->Bind();
 		}
 
 		if (normalTexture)
 		{
+			params |= NORMAL_TEXTURE_MASK;
 			normalTexture->SetActive(GL_TEXTURE2);
 			normalTexture->Bind();
 		}
 
 		if (emissiveTexture)
 		{
+			params |= EMISSIVE_TEXTURE_MASK;
 			emissiveTexture->SetActive(GL_TEXTURE3);
 			emissiveTexture->Bind();
 		}
 
 		if (cubemapTexture)
 		{
+			params |= CUBEMAP_TEXTURE_MASK;
 			cubemapTexture->SetActive(GL_TEXTURE4);
 			cubemapTexture->Bind();
 		}
