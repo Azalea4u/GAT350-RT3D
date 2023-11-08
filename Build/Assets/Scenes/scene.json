@@ -97,7 +97,7 @@
 			"name": "tree",
 			"persistent": true,
 			"active": true,
-			"prototype":  true,
+			"prototype": true,
 			"transform": {
 				"position": [ -1, 0, 1 ],
 				"scale": [ 1, 1, 1 ],
@@ -107,9 +107,68 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "models/quad.obj",
-					"materialName": "materials/sprite.mtrl"
+					"materialName": "materials/tree.mtrl"
 				}
 			]
+		},
+		{
+			"type": "Actor",
+			"name": "light",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 3, 3, 3 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"eType": "Point",
+					"color": [ 1, 1, 1 ],
+					"intensity": 1,
+					"range": 20,
+					"innerAngle": 10.0,
+					"outerAngle": 30.0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "camera",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 3 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 180, 0 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"fov": 70,
+					"near": 0.1,
+					"far": 100
+				},
+				{
+					"type": "CameraController",
+					"speed": 5,
+					"sensitivity": 0.5
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "rotation",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"rotation": [ 0, 0, 0 ]
+			},
+			"componant": {
+				"type": "RotationComponent",
+				"speed": 0.5
+			}
 		}
 	]
 }

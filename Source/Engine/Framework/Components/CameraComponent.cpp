@@ -72,5 +72,7 @@ namespace nc
 	{
 		// READ_DATA of fov, aspect, near and far values
 		READ_DATA(value, fov);
+		READ_DATA(value, near);
+		READ_DATA(value, far);
 	}
 }

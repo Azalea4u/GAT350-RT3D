@@ -45,5 +45,18 @@ namespace nc
 	{
 		// read json file
 
+		//get light type
+		std::string lightTypeName;
+		READ_NAME_DATA(value, "lightType", lightTypeName);
+		if (IsEqualIgnoreCase(lightTypeName, "point")) type = eType::Point;
+		else if (IsEqualIgnoreCase(lightTypeName, "directional")) type = eType::Directional;
+		else if (IsEqualIgnoreCase(lightTypeName, "spot")) type = eType::Spot;
+
+		// get color
+		READ_DATA(value, color);
+		READ_DATA(value, intensity);
+		READ_DATA(value, range);
+		READ_DATA(value, innerAngle);
+		READ_DATA(value, outerAngle);
 	}
 }

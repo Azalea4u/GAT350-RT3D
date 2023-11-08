@@ -47,6 +47,16 @@ layout(binding = 1) uniform sampler2D specularTexture;
 layout(binding = 2) uniform sampler2D normalTexture;
 layout(binding = 3) uniform sampler2D emissiveTexture;
 
+float attenuation (in vec3 position1, in vec3 position2, in float range)
+{
+    float distanceSqr = dot(position1 - position2, position1 - position2);
+    float rangeSqr = pow(range, 2.0);
+    float attenuation = max(0, 1 - pow((distanceSqr / rangeSqr), 2.0));
+    attenuation = pow(attenuation, 2.0);
+
+    return attenuation;
+}
+
 void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
 {
     // DIFFUSE 
@@ -78,23 +88,11 @@ void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, ou
     }
 }
 
-float attenuation(in vec3 position1, in vec3 position2, in float range)
-{
-	float distanceSqr = dot(position1 - position2, position1 - position2);
-	float rangeSqr = pow(range, 2.0);
-	float attenuation = max(0, 1 - pow((distanceSqr / rangeSqr), 2.0));
-	attenuation = pow(attenuation, 2.0);
- 
-	return attenuation;
-}
-
 void main()
 {
     vec4 albedoColor =  bool(material.params & ALBEDO_TEXTURE_MASK) ? texture(albedoTexture, ftexcoord) : vec4(material.albedo, 1);
     vec4 specularColor = bool(material.params & SPECULAR_TEXTURE_MASK) ? texture(specularTexture, ftexcoord) : vec4(material.specular, 1);
     vec4 emissiveColor = bool(material.params & EMISSIVE_TEXTURE_MASK) ? texture(emissiveTexture, ftexcoord) : vec4(material.emissive, 1);
-    //vec4 specularColor = texture(specularTexture, ftexcoord);//vec4(material.specular, 1);
-    //vec4 emissiveColor = texture(emissiveTexture, ftexcoord);//vec4(material.emissive, 1);
 
     // set ambient light + emissive color
     ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
