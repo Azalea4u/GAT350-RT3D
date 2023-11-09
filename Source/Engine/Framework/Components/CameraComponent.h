@@ -23,7 +23,7 @@ namespace nc
 		glm::mat4 view{ 1 };
 
 		float fov = 70.0f;
-		float aspect = 0.0f;
+		float aspect = 0;
 		float near = 0.1f;
 		float far = 100.0f;
 	};
