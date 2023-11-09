@@ -209,5 +209,17 @@
     <None Include="..\..\Build\Assets\Materials\frameBuffer.mtrl">
       <Filter>Materials</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Shaders\post_process.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\post_process.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\post_process.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\post_process.mtrl">
+      <Filter>Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

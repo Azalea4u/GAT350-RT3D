@@ -2,47 +2,6 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "actor1",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ 0, 0, 1 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
-					"materialName": "materials/ogre.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"eular": 10
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "cube",
-			"persistent": true,
-			"active": true,
-			"prototype": false,
-			"transform": {
-				"position": [ -1, 0, 1 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/cube.obj",
-					"materialName": "materials/frameBuffer.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
 			"name": "light",
 			"persistent": true,
 			"active": true,
@@ -84,6 +43,43 @@
 					"type": "CameraController",
 					"speed": 5,
 					"sensitivity": 0.5
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ogre",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/ogre.obj",
+					"materialName": "materials/ogre.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"Rotate": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "post_process",
+			"persistent": true,
+			"active": true,
+			"prototype": false,
+			"transform": {},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/post_process.mtrl"
 				}
 			]
 		}
