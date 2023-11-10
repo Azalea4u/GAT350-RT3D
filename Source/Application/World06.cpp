@@ -47,21 +47,54 @@ namespace nc
         // set post_process gui
         ImGui::Begin("Post-Process");
         ImGui::SliderFloat("Blend", &m_blend, 0, 1);
+        // Invert
         bool effect = m_params& INVERT_MASK;
         if (ImGui::Checkbox("Invert", &effect))
         {
             (effect) ? m_params |= INVERT_MASK : m_params ^= INVERT_MASK;
         }
+        // Grayscale
         effect = m_params & GRAYSCALE_MASK;
         if (ImGui::Checkbox("Grayscale", &effect))
         {
             (effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK;
         }
+        // Color Tint
         effect = m_params & COLORTINT_MASK;
         if (ImGui::Checkbox("Color Tint", &effect))
         {
             (effect) ? m_params |= COLORTINT_MASK : m_params ^= COLORTINT_MASK;
         }
+        if (effect) // Show color picker when Color Tint is enabled
+        {
+            ImGui::ColorEdit3("Tint Color", glm::value_ptr(m_tint));
+            ImGui::SliderFloat("Tint Intensity", &m_tintIntensity, 0, 1);
+        }
+        // Grain
+        effect = m_params & GRAIN_MASK;
+        if (ImGui::Checkbox("Grain", &effect))
+        {
+            (effect) ? m_params |= GRAIN_MASK : m_params ^= GRAIN_MASK;
+        }
+        // Scanline
+        effect = m_params & SCANLINE_MASK;
+        if (ImGui::Checkbox("Scanline", &effect))
+        {
+            (effect) ? m_params |= SCANLINE_MASK : m_params ^= SCANLINE_MASK;
+        }
+        // Kernel
+        effect = m_params & RGB_MASK;
+        if (ImGui::Checkbox("RGB Shift", &effect))
+        {
+            (effect) ? m_params |= RGB_MASK : m_params ^= RGB_MASK;
+        }
+        if (effect)
+        {
+        ImGui::SliderFloat2("Red Offset", glm::value_ptr(redOffset), -0.01f, 0.01f);
+        ImGui::SliderFloat2("Green Offset", glm::value_ptr(greenOffset), -0.01f, 0.01f);
+        ImGui::SliderFloat2("Blue Offset", glm::value_ptr(blueOffset), -0.01f, 0.01f);
+        }
+
         ImGui::End();
 
         // set post_process shader
@@ -71,6 +104,11 @@ namespace nc
             program->Use();
             program->SetUniform("blend", m_blend);            
             program->SetUniform("params", m_params);
+            program->SetUniform("tint", m_tint);
+            program->SetUniform("tintIntensity", m_tintIntensity);
+            program->SetUniform("redOffset", redOffset);
+            program->SetUniform("greenOffset", greenOffset);
+            program->SetUniform("blueOffset", blueOffset);
 		}
 
         ENGINE.GetSystem<Gui>()->EndFrame();

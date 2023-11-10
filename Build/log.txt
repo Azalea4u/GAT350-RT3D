@@ -6,7 +6,9 @@ INFO: Factory.h(74) Class registered: CameraController
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(38) Initialize Engine...
-WARNING: Program.cpp(165) Could not find uniform location: blend
+WARNING: Program.cpp(165) Could not find uniform location: redOffset
+WARNING: Program.cpp(165) Could not find uniform location: greenOffset
+WARNING: Program.cpp(165) Could not find uniform location: blueOffset
 WARNING: Program.cpp(165) Could not find uniform location: view
 WARNING: Program.cpp(165) Could not find uniform location: projection
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
