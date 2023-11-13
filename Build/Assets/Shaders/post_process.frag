@@ -10,6 +10,7 @@
 in layout(location = 0) vec2 ftexcoord;
 out layout(location = 0) vec4 ocolor;
 
+uniform float time = 0;
 uniform float blend = 1;
 uniform uint params = 0;
 uniform vec3 tint = {1, 0, 0};
@@ -35,15 +36,18 @@ vec4 colortint(in vec4 baseColor) {
     return vec4(tintedColor, baseColor.a);
 }
 
+float random(vec2 st) 
+{
+	return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453);
+}
 
 vec4 grain(in vec4 color, float amount) {
-    float noise = fract(sin(dot(ftexcoord ,vec2(12.9898,78.233))) * 43758.5453);
-    return mix(color, vec4(vec3(noise), 1.0), amount);
+    return color * random(gl_FragCoord.xy + time);
 }
 
 vec4 scanline(in vec4 color) {
-    float scanlineEffect = sin(ftexcoord.y * 800.0) * 0.5 + 0.5; // 800.0 is an arbitrary number to determine the density of the scanlines
-    return vec4(color.rgb * scanlineEffect, color.a);
+    float scanline = sin(gl_FragCoord.y * 800.0) * 0.5 + 0.5; // 800.0 is an arbitrary number to determine the density of the scanlines
+    return color * scanline;
 }
 
 vec4 rgbShift(in vec4 color, in vec2 texCoord, vec4 redOffset, vec4 greenOffset, vec4 blueOffset) {

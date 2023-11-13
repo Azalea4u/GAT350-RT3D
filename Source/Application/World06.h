@@ -24,7 +24,7 @@ namespace nc
 
 	private:
 		float m_time;
-		float m_speed = 5;
+		float m_speed{ 5 };
 		float m_blend{ 1 };
 		glm::vec3 m_tint{ 1 };
 		float m_tintIntensity{ 0 };
