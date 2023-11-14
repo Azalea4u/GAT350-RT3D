@@ -6,18 +6,8 @@ INFO: Factory.h(74) Class registered: CameraController
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(39) Initialize Engine...
+ERROR: Framebuffer.cpp(87) Error creating frame buffer.
 WARNING: Program.cpp(165) Could not find uniform location: redOffset
 WARNING: Program.cpp(165) Could not find uniform location: greenOffset
 WARNING: Program.cpp(165) Could not find uniform location: blueOffset
-WARNING: Program.cpp(165) Could not find uniform location: view
-WARNING: Program.cpp(165) Could not find uniform location: projection
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].position
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].direction
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].color
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
-WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
-WARNING: Program.cpp(165) Could not find uniform location: numLights
-WARNING: Program.cpp(165) Could not find uniform location: ambientLight
+ASSERT: Renderer.cpp(189) OPENGL Source: OpenGL Type: Error(1286) | GL_INVALID_FRAMEBUFFER_OPERATION error generated. Operation is not valid because a bound framebuffer is not framebuffer complete.
