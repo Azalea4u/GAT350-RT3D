@@ -260,11 +260,11 @@
     <None Include="..\..\Build\Assets\Fantasy\fantasy_cel.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\Fantasy\cel.mtrl">
-      <Filter>Materials</Filter>
-    </None>
     <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.vert">
       <Filter>Shaders\lit</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\cel.mtrl">
+      <Filter>Materials</Filter>
     </None>
   </ItemGroup>
 </Project>
