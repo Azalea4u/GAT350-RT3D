@@ -14,8 +14,18 @@ namespace nc
 	{
 	}
 
-	void LightComponent::SetProgram(const res_t<Program> program, const std::string& name)
+	void LightComponent::SetProgram(const res_t<Program> program, const std::string& name, const glm::mat4& view)
+
 	{
+		// transform light position and direction to camera space
+		glm::vec3 position = glm::vec3(view * glm::vec4(m_owner->transform.position, 1));
+
+		glm::vec3 direction = glm::vec3(view * glm::vec4(m_owner->transform.Forward(), 0));
+
+		program->SetUniform(name + ".type", type);
+		program->SetUniform(name + ".position", position);
+		program->SetUniform(name + ".direction", direction); 
+		
 		program->SetUniform(name + ".type", type);
 		program->SetUniform(name + ".position", m_owner->transform.position);
 		program->SetUniform(name + ".direction", m_owner->transform.Forward());
@@ -27,7 +37,14 @@ namespace nc
 
 		if (castShadow)
 		{
-			program->SetUniform("shadowVP", GetShadowMatrix());
+			glm::mat4 bias = glm::mat4(
+				glm::vec4(0.5f, 0.0f, 0.0f, 0.0f),
+				glm::vec4(0.0f, 0.5f, 0.0f, 0.0f),
+				glm::vec4(0.0f, 0.0f, 0.5f, 0.0f),
+				glm::vec4(0.5f, 0.5f, 0.5f, 1.0f));
+
+			program->SetUniform("shadowVP", bias * GetShadowMatrix());
+			program->SetUniform("shadowBias", shadowBias);
 		}
 	}
 
@@ -49,6 +66,7 @@ namespace nc
 		if (castShadow)
 		{
 			ImGui::DragFloat("Shadow Size", &shadowSize, 0.1f, 1, 60);
+			ImGui::DragFloat("Shadow Bias", &shadowBias, 0.001f, 0, 0.5f);
 		}
 	}
 

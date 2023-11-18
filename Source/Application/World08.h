@@ -6,7 +6,7 @@
 
 namespace nc
 {
-	class World07 : public World
+	class World08 : public World
 	{
 	public:
 		const uint32_t INVERT_MASK		= (1 << 0);
@@ -26,13 +26,11 @@ namespace nc
 		float m_time;
 		float m_speed{ 5 };
 		float m_blend{ 1 };
-		glm::vec3 m_tint{ 1 };
-		float m_tintIntensity{ 0 };
 
-		glm::vec4 redOffset { 0.3f, 0.3f, 0.3f, 0.3f };
-		glm::vec4 greenOffset{ 0.0f, 0.0f, 0.0f, 0.0f };
-		glm::vec4 blueOffset{ -0.3f, -0.3f, -0.3f, -0.3f };
-		
+		int m_celLevels{ 0 };
+		float m_celSpecularCutoff { 0.3f };
+		float m_celOutline { 0.3f };
+
 		uint32_t m_params{ 0 };
 
 		float m_refraction{ 1 };

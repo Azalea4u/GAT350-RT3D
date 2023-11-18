@@ -39,6 +39,12 @@ namespace nc
 		glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+
+		GLfloat border[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+		glTexParameterfv(m_target, GL_TEXTURE_BORDER_COLOR, border);
+
 		return true;
 	}
 

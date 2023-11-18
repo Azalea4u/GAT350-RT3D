@@ -13,6 +13,32 @@ namespace nc
 	constexpr float RadiansToDegrees(float radians) { return radians * (180.0f / Pi); }
 	constexpr float DegreesToRadians(float degrees) { return degrees * (Pi / 180.0f); }
 
+	// Bits
+	template <typename T>
+	constexpr T SetBit(T value, T bit) 
+	{ 
+		return value | (1 << bit);
+	}
+
+	template <typename T>
+	constexpr T ClearBit(T value, T bit) 
+	{ 
+		return value & ~(1 << bit); 
+	}
+
+	template <typename T>
+	constexpr T ToggleBit(T value, T bit)
+	{
+		return value ^ (1 << bit); 
+	}
+
+	// test bit
+	template <typename T>
+	constexpr T TestBit(T value, T bit)
+	{
+		return value & (1 << bit);
+	}
+
 	constexpr int Wrap(int value, int max)
 	{
 		return (value % max) + ((value < 0) ? max : 0);

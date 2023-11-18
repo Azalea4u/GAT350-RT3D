@@ -28,7 +28,6 @@ namespace nc
 	{
 		m_texture = texture;
 		m_size = m_texture->GetSize();
-
 		m_texture->Bind();
 
 		glGenFramebuffers(1, &m_fbo);

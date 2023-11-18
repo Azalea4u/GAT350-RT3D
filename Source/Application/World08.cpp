@@ -1,4 +1,4 @@
-#include "World07.h"
+#include "World08.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
@@ -8,7 +8,7 @@
 
 namespace nc
 {
-    bool World07::Initialize()
+    bool World08::Initialize()
     {
         m_scene = std::make_unique<Scene>();
         m_scene->Load("Scenes/scene_Shadow.json");
@@ -38,11 +38,11 @@ namespace nc
         return true;
     }
 
-    void World07::Shutdown()
+    void World08::Shutdown()
     {
     }
 
-    void World07::Update(float dt)
+    void World08::Update(float dt)
     {
         m_time += dt;
 
@@ -51,10 +51,25 @@ namespace nc
         m_scene->Update(dt);
         m_scene->ProcessGui();
 
+        ImGui::Begin("Cel");
+        ImGui::SliderInt("Levels", &m_celLevels, 1, 8);
+        ImGui::SliderFloat("Specular Cutoff", &m_celSpecularCutoff, 0, 1);
+        ImGui::SliderFloat("Outline", &m_celOutline, 0, 1);
+        ImGui::End();
+
+        auto program = GET_RESOURCE(Program, "Shaders/lit_phong_cel.prog");
+        if (program)
+		{
+			program->Use();
+			program->SetUniform("celLevels", m_celLevels);
+			program->SetUniform("celSpecularCutoff", m_celSpecularCutoff);
+			program->SetUniform("celOutline", m_celOutline);
+		}
+
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
-    void World07::Draw(Renderer& renderer)
+    void World08::Draw(Renderer& renderer)
     {
         // *** PASS 1 *** //
         auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");
