@@ -8,7 +8,7 @@ in layout(location = 3) vec3 vtangent;
 out layout(location = 0) vec3 oposition;
 out layout(location = 1) vec2 otexcoord;
 out layout(location = 2) vec4 oshadowcoord;
-out layout(location = 3) mat3 otbn;
+out layout(location = 7) mat3 otbn;
 
 uniform mat4 model;
 uniform mat4 view;

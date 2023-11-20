@@ -1,4 +1,5 @@
 #pragma once
+#include "Framework/Object.h"
 #include <string>
 #include <memory>
 

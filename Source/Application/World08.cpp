@@ -14,6 +14,8 @@ namespace nc
         m_scene->Load("Scenes/scene_Shadow.json");
         m_scene->Initialize();
 
+        m_editor = std::make_unique<Editor>();
+
         auto texture = std::make_shared<Texture>();
         texture->CreateDepthTexture(512, 512);
         ADD_RESOURCE("depth_texture", texture);
@@ -50,6 +52,8 @@ namespace nc
 
         m_scene->Update(dt);
         m_scene->ProcessGui();
+
+        m_editor->ProcesssGui(m_scene.get());
 
         ImGui::Begin("Cel");
         ImGui::SliderInt("Levels", &m_celLevels, 1, 8);
