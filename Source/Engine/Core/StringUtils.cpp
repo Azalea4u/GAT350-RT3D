@@ -34,7 +34,7 @@ namespace nc
 	// takes in a string an input and appends static unsigned integer to the end of the string
 	std::string CreateUnique(const std::string input)
 	{
-		static uint32_t unique = 0;
+		static uint32_t unique = 1;
  
 		return input + std::to_string(unique++);
 	}

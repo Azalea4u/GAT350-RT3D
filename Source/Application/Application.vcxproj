@@ -172,6 +172,7 @@
   <ItemGroup>
     <None Include="..\..\Build\Assets\Fantasy\fantasy.mtrl" />
     <None Include="..\..\Build\Assets\Fantasy\fantasy_cel.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\basic.mtrl" />
     <None Include="..\..\Build\Assets\Materials\cel.mtrl" />
     <None Include="..\..\Build\Assets\Materials\frameBuffer.mtrl" />
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
@@ -186,8 +187,10 @@
     <None Include="..\..\Build\Assets\Materials\sprite.mtrl" />
     <None Include="..\..\Build\Assets\Materials\squirrel.mtrl" />
     <None Include="..\..\Build\Assets\Materials\tree.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\ui_camera.mtrl" />
     <None Include="..\..\Build\Assets\Materials\ui_light.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
+    <None Include="..\..\Build\Assets\Scenes\scene_editor.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_FrameBuffer.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_Shadow.json" />
     <None Include="..\..\Build\Assets\Shaders\cubemap.frag" />

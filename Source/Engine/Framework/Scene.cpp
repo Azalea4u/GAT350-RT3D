@@ -91,6 +91,7 @@ namespace nc
 				m_actors.erase(iter);
 				break;
 			}
+			iter++;
 		}
 	}
 
