@@ -2,8 +2,8 @@
   "program": "shaders/lit_phong_cel.prog",
   "albedo": [
     1,
-    1,
-    1
+    0,
+    0
   ],
   "specular": [
     0,

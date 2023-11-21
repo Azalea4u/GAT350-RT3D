@@ -85,7 +85,7 @@ void phong(in Light light,in vec3 position, in vec3 normal, out vec3 diffuse, ou
 	}
 
     float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-    float cellIntensity = floor(intensity * celLevels) * celScaleFactor;
+    float cellIntensity = floor(intensity * celLevels) * 0.2;
     diffuse = (light.color * cellIntensity);
     //diffuse = (light.color * intensity);
 

@@ -27,7 +27,7 @@ namespace nc
 		float m_speed{ 5 };
 		float m_blend{ 1 };
 
-		int m_celLevels{ 0 };
+		int m_celLevels{ 5 };
 		float m_celSpecularCutoff { 0.3f };
 		float m_celOutline { 0.3f };
 

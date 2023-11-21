@@ -19,15 +19,12 @@ namespace nc
 	{
 		// transform light position and direction to camera space
 		glm::vec3 position = glm::vec3(view * glm::vec4(m_owner->transform.position, 1));
-
 		glm::vec3 direction = glm::vec3(view * glm::vec4(m_owner->transform.Forward(), 0));
 
 		program->SetUniform(name + ".type", type);
 		program->SetUniform(name + ".position", position);
 		program->SetUniform(name + ".direction", direction); 
 		program->SetUniform(name + ".color", color);
-		program->SetUniform(name + ".position", m_owner->transform.position);
-		program->SetUniform(name + ".direction", m_owner->transform.Forward());
 		program->SetUniform(name + ".intensity", intensity);
 		program->SetUniform(name + ".range", range);
 		program->SetUniform(name + ".innerAngle", glm::radians(innerAngle));
