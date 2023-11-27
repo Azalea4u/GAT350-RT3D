@@ -9,21 +9,70 @@ namespace nc
 		if (ImGui::IsKeyPressed(ImGuiKey_GraveAccent)) m_active = !m_active;
 	}
 
+	void Editor::RenderResourceFilter()
+	{
+		// Assuming ImGui is initialized and this is called within an ImGui frame
+		ImGui::Begin("Resource Filter");
+
+		const char* items[] = { "Texture", "Model", "Material", "Shader" };
+		static int currentItem = static_cast<int>(m_currentResourceType);
+
+		if (ImGui::Combo("Resource Type", &currentItem, items, IM_ARRAYSIZE(items))) {
+			m_currentResourceType = static_cast<ResourceType>(currentItem);
+		}
+
+		ImGui::End();
+	}
+
 	void Editor::ProcesssGui(Scene* scene)
 	{
 		if (!m_active) return;
 
-		// show resources
+		RenderResourceFilter(); // Render the resource filter UI.
+
 		ImGui::Begin("Resources");
-		auto resources = GET_RESOURCES(Resource);
-		for (auto& resource : resources)
-		{
-			if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected))
-			{
-				m_selected = resource.get();
+
+		// Depending on the selected ResourceType, use the corresponding GetAllOfType
+		switch (m_currentResourceType) {
+			case ResourceType::TEXTURE: {
+				auto resources = GET_RESOURCES(Texture);
+				for (auto& resource : resources) {
+					if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) {
+						m_selected = resource.get();
+					}
+				}
+				break;
+			}
+			case ResourceType::MODEL: {
+				auto resources = GET_RESOURCES(Model);
+				for (auto& resource : resources) {
+					if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) {
+						m_selected = resource.get();
+					}
+				}
+				break;
+			}
+			case ResourceType::MATERIAL: {
+				auto resources = GET_RESOURCES(Material);
+				for (auto& resource : resources) {
+					if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) {
+						m_selected = resource.get();
+					}
+				}
+				break;
+			}
+			case ResourceType::SHADER: {
+				auto resources = GET_RESOURCES(Shader);
+				for (auto& resource : resources) {
+					if (ImGui::Selectable(resource->name.c_str(), resource.get() == m_selected)) {
+						m_selected = resource.get();
+					}
+				}
+				break;
 			}
 		}
 		ImGui::End();
+
 
 		//show scene
 		ImGui::Begin("Scene");
