@@ -9,4 +9,7 @@ namespace nc
 	bool IsEqualIgnoreCase(const std::string& str1, const std::string& str2);
 
 	std::string CreateUnique(const std::string input);
+
+	int GetTrailingNumber(const std::string& str);
+	std::string RemoveTrailingNumber(const std::string& str);
 }

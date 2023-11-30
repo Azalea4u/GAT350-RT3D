@@ -17,7 +17,8 @@ namespace nc
 		void Update(float dt);
 		void Draw(Renderer& renderer);
 
-		void Add(std::unique_ptr<Actor> actor);
+		//void Add(std::unique_ptr<Actor> actor);
+		void Add(std::unique_ptr<Actor> actor, Actor* preyActor = nullptr);
 		void RemoveAll(bool force = false);
 		void Remove(Actor* actor);
 
@@ -32,6 +33,7 @@ namespace nc
 		std::vector<T*> GetComponents();
 
 		void SetGame(World* game) { m_game = game; }
+
 
 		void ProcessGui();
 
