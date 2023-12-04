@@ -90,6 +90,10 @@ namespace nc
 			// insert new actor (before iterator)
 			m_actors.insert(iter, std::move(actor));
 		}
+		else
+		{
+			m_actors.push_back(std::move(actor));
+		}
 	
 	}
 
