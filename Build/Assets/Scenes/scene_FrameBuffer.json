@@ -2,43 +2,29 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "skybox",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ 0, 0, 1 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/cube.obj",
-					"materialName": "materials/skybox.mtrl",
-					"enableDepth": false,
-					"cullface": "front"
-				}
-			]
-		},
-		{
-			"type": "Actor",
 			"name": "light",
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 3, 3, 3 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
+				"position": [ 26, 65, 105 ],
+				"rotation": [ 60, 30, 0 ],
+				"scale": [ 0.5, 0.5, 0.5 ]
 			},
 			"components": [
 				{
 					"type": "LightComponent",
-					"lightType": "Point",
+					"lightType": "Directional",
 					"color": [ 1, 1, 1 ],
 					"intensity": 1,
 					"range": 20,
 					"innerAngle": 10.0,
-					"outerAngle": 30.0
+					"outerAngle": 30.0,
+					"castShadow": true
+				},
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl"
 				}
 			]
 		},
@@ -48,7 +34,7 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 0, 0, 3 ],
+				"position": [ 23, 22, 63.5 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 180, 0 ]
 			},
@@ -61,56 +47,181 @@
 				},
 				{
 					"type": "CameraController",
-					"speed": 5,
+					"speed": 20,
 					"sensitivity": 0.5
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "ogre",
+			"name": "Farmhouse",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
-				"position": [ 0, 0, 1 ],
-				"scale": [ 1, 1, 1 ],
+				"position": [ 45, 16.3, 0 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
-					"materialName": "materials/ogre.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"Rotate": [ 0, 30, 0 ]
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Farmhouse_01.obj",
+					"materialName": "materials/farm.mtrl"
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "ground",
+<<<<<<< HEAD
+			"name": "Barn",
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 0, 0, 1 ],
-				"scale": [ 1, 1, 1 ],
+				"position": [ -28, 16, 16 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, -43, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Barn_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Silo",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -6, 12, -36 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, -43, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Silo_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Greenhouse",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 63, 17.5, 163 ],
+				"scale": [ 0.03, 0.03, 0.03 ],
+				"rotation": [ 0, -61, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Greenhouse_Large_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "ProduceStand",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -19, 19, 64 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 92, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_ProduceStand_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 1.4, 15, -10.4 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 92, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -18, 15.6, 78 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 92, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -31, 15.3, 66.8 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Ground",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -15, -14, 0 ],
+				"scale": [ 2, 2, 2 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
 					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Generic_Ground_01.obj",
-					"materialName": "materials/basic.mtrl"
+					"materialName": "materials/farm.mtrl"
 				}
 			]
 		},
 		{
 			"type": "Actor",
+=======
+>>>>>>> parent of b4a8d8e (12/4 WIP - final)
 			"name": "post_process",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"prototype": false,
 			"transform": {},
 			"components": [

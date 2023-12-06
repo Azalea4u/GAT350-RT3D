@@ -23,6 +23,9 @@
     <Filter Include="Shaders\unlint">
       <UniqueIdentifier>{dd2cf99a-2abf-4fd3-a71b-f76d1b4a2d7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Materials\Farm">
+      <UniqueIdentifier>{507ed5bb-7a5e-4e31-9720-4160ee7edb81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -274,6 +277,12 @@
     </None>
     <None Include="..\..\Build\Assets\Materials\ui_camera.mtrl">
       <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\farm_cel.mtrl">
+      <Filter>Materials\Farm</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\farm.mtrl">
+      <Filter>Materials\Farm</Filter>
     </None>
   </ItemGroup>
 </Project>
