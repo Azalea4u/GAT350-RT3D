@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+Build/Assets/POLYGON_Farm_SourceFiles/SourceFiles/Polygon_Farm_Demo_FBX.fbx
+Build/Assets/POLYGON_Farm_SourceFiles/SourceFiles/PolygonFarm_DemoScene.ma
