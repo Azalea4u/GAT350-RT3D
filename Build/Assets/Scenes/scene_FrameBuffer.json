@@ -2,6 +2,26 @@
 	"actors": [
 		{
 			"type": "Actor",
+			"name": "skybox",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/skybox.mtrl",
+					"enableDepth": false,
+					"cullface": "front"
+				}
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "light",
 			"persistent": true,
 			"active": true,
@@ -72,7 +92,6 @@
 		},
 		{
 			"type": "Actor",
-<<<<<<< HEAD
 			"name": "Barn",
 			"persistent": true,
 			"active": true,
@@ -217,11 +236,9 @@
 		},
 		{
 			"type": "Actor",
-=======
->>>>>>> parent of b4a8d8e (12/4 WIP - final)
 			"name": "post_process",
 			"persistent": true,
-			"active": true,
+			"active": false,
 			"prototype": false,
 			"transform": {},
 			"components": [
