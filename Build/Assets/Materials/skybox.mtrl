@@ -1,12 +1,12 @@
 {
   "program": "shaders/skybox.prog",
-  "cubemap": "beach_cubemap",
+  "cubemap": "sky_cubemap",
   "cubemaps": [
-    "textures/beach_cubemap/posx.jpg",
-    "textures/beach_cubemap/negx.jpg",
-    "textures/beach_cubemap/posy.jpg",
-    "textures/beach_cubemap/negy.jpg",
-    "textures/beach_cubemap/posz.jpg",
-    "textures/beach_cubemap/negz.jpg"
+    "textures/sky_cubemap/posx.jpg",
+    "textures/sky_cubemap/negx.jpg",
+    "textures/sky_cubemap/posy.jpg",
+    "textures/sky_cubemap/negy.jpg",
+    "textures/sky_cubemap/posz.jpg",
+    "textures/sky_cubemap/negz.jpg"
   ]
 }
