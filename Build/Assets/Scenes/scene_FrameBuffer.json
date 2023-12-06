@@ -272,6 +272,42 @@
 		},
 		{
 			"type": "Actor",
+			"name": "AppleTree.6",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -60.3, 10.3, 82.5 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 92, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.7",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -70.6, 12.7, 65.5 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 92, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "AppleTree_1",
 			"persistent": true,
 			"active": true,
@@ -279,6 +315,60 @@
 				"position": [ -31, 15.3, 66.8 ],
 				"scale": [ 0.1, 0.1, 0.1 ],
 				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -38, 13.3, 78.8 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 55, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -46, 13.7, 59 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 179, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_4",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -60, 15.3, 39.6 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, "0\\82", 0 ]
 			},
 			"components": [
 				{

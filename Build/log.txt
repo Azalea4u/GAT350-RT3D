@@ -6,6 +6,7 @@ INFO: Factory.h(74) Class registered: CameraController
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(40) Initialize Engine...
+ERROR: Json.cpp(128) Invalid json data type: rotation
 INFO: Factory.h(82) Prototype Class registered: Camera
 INFO: Factory.h(82) Prototype Class registered: Light
 INFO: Factory.h(82) Prototype Class registered: Sphere
