@@ -11,8 +11,9 @@ namespace nc
     bool World08::Initialize()
     {
         m_scene = std::make_unique<Scene>();
+        m_scene->Load("Scenes/scene_FrameBuffer.json");
         m_scene->Load("Scenes/scene_editor.json");
-        m_scene->Load("Scenes/scene_Shadow.json");
+        //m_scene->Load("Scenes/scene_Shadow.json");
         m_scene->Initialize();
 
         m_editor = std::make_unique<Editor>();
