@@ -28,6 +28,9 @@ namespace nc
 	{
 		if (!m_active) return;
 
+		// set separator widget to yellow to stand out
+		ImGui::PushStyleColor(ImGuiCol_Separator, ImVec4{ 1,1,0,1 });
+
 		RenderResourceFilter(); // Render the resource filter UI.
 
 		ImGui::Begin("Resources");
@@ -161,5 +164,7 @@ namespace nc
 			}
 		}
 		ImGui::End();
+
+		ImGui::PopStyleColor();
 	}
 }
