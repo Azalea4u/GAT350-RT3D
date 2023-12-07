@@ -110,7 +110,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "Barn",
+			"name": "Barn_01",
 			"persistent": true,
 			"active": true,
 			"transform": {
@@ -128,13 +128,49 @@
 		},
 		{
 			"type": "Actor",
-			"name": "Silo",
+			"name": "Barn_02",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 159, 13.6, 83 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, -52, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Barn_02.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Silo_01",
 			"persistent": true,
 			"active": true,
 			"transform": {
 				"position": [ -6, 12, -36 ],
 				"scale": [ 0.05, 0.05, 0.05 ],
 				"rotation": [ 0, -43, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Silo_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Silo_02",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 177.4, 12, 37 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 47, 0 ]
 			},
 			"components": [
 				{
@@ -164,6 +200,60 @@
 		},
 		{
 			"type": "Actor",
+			"name": "Outhouse",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -40, 10, 93 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 108, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Outhouse_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Shelter",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -36, 9.6, 160 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 164, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_Shelter_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "WaterTower",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 116, 14, 114.3 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 206, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_WaterTower_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "ProduceStand",
 			"persistent": true,
 			"active": true,
@@ -176,6 +266,132 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Bld_ProduceStand_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Well",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 35, 17.3, 113 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 148, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Prop_Well_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Pond",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 61.9, 14.2, -89.7 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 423, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Pond_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Barrel_1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 67.5, 15.5, 31 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 148, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Prop_Barrel_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Barrel_2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 67.5, 15.5, 31 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 148, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Prop_Barrel_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Barrel_3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 81.8, 15.5, 13 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 199, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Prop_Barrel_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Barrel_4",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 80.5, 15.8, 8.9 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 91, 143, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Prop_Barrel_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tractor",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 93, 15, 27 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 343, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Veh_Tractor_01.obj",
 					"materialName": "materials/farm.mtrl"
 				}
 			]
@@ -308,6 +524,96 @@
 		},
 		{
 			"type": "Actor",
+			"name": "AppleTree.8",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -60, 9.2, 112.5 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 252, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.9",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -26, 11.6, 102 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, -73, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.10",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 81.8, 15.7, 31.2 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, -148, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.11",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 81.8, 15.7, 108.4 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, -189, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree.12",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 97, 15.6, 93 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, -148, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "AppleTree_1",
 			"persistent": true,
 			"active": true,
@@ -368,12 +674,84 @@
 			"transform": {
 				"position": [ -60, 15.3, 39.6 ],
 				"scale": [ 0.1, 0.1, 0.1 ],
-				"rotation": [ 0, "0\\82", 0 ]
+				"rotation": [ 0, 82, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
 					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_5",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -29.5, 11.4, 122.4 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 2, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_6",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 67, 17, 125 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 82, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "AppleTree_7",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 116, 15.4, 80 ],
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 0, 82, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Apple_Grown_01.obj",
+					"materialName": "materials/farm.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "TreeStump",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 58, 17.5, 135 ],
+				"scale": [ 0.05, 0.05, 0.05 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Env_Tree_Stump_01.obj",
 					"materialName": "materials/farm.mtrl"
 				}
 			]
@@ -393,21 +771,6 @@
 					"type": "ModelComponent",
 					"modelName": "POLYGON_Farm_SourceFiles/SourceFiles/OBJ/SM_Generic_Ground_01.obj",
 					"materialName": "materials/farm.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "post_process",
-			"persistent": true,
-			"active": false,
-			"prototype": false,
-			"transform": {},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/cube.obj",
-					"materialName": "materials/post_process.mtrl"
 				}
 			]
 		}
